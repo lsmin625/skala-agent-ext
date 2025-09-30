@@ -7,7 +7,6 @@ langgraph
 python-dotenv
 typing-extensions
 openai
-jupyter
-ipykernel
 gradio
-nb-mypy
+fastapi
+uvicorn
