@@ -1,0 +1,6 @@
+# main.py
+from quiz_agents.ui.app import build_ui
+
+if __name__ == "__main__":
+    demo = build_ui()
+    demo.launch()
