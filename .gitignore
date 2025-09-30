@@ -109,3 +109,5 @@ Thumbs.db
 .project
 .classpath
 *.swp
+
+src/**/__pycache__/
