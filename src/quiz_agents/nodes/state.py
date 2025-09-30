@@ -28,3 +28,15 @@ class AppState(TypedDict, total=False):
 
     # --- 교수(professor) 리포트 흐름 관련 필드 ---
     report_request: Annotated[ReportRequest, "교수가 요청한 리포트 상세 정보"]
+
+def init_state() -> dict:
+    """초기 상태를 설정합니다."""
+    return {
+        "app_state": {
+            "chat_history": [],
+            "role": "unknown",
+            "questions": [],
+            "quiz_index": 0,
+            "user_answers": [],
+        }
+    }

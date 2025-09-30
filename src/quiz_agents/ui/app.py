@@ -1,6 +1,6 @@
 import gradio as gr
 from quiz_agents.nodes.graph import build_graph
-from quiz_agents.ui.state import init_state
+from quiz_agents.nodes.state import init_state
 from quiz_agents.config import settings
 
 quiz_app = build_graph()
