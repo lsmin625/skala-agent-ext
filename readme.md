@@ -125,6 +125,6 @@ python main.py api
 ```bash
 uvicorn quiz_agents.api.app:app --reload
 ```
-- uvicorn은 ASGI 서버로, FastAPI 애플리케이션을 실행하는 데 사용
-- quiz_agents.api.app:app은 quiz_agents/api/app.py 파일에서 app 객체(FastAPI 인스턴스)를 가져와 실행 시킴.
-- reload 옵션은 개발 모드에서 사용되며, 코드 변경 시 서버를 자동으로 다시 시작
+- `uvicorn`은 ASGI 서버로, FastAPI 애플리케이션을 실행하는 데 사용
+- `quiz_agents.api.app:app`은 quiz_agents/api/app.py 파일에서 app 객체(FastAPI 인스턴스)를 가져와 실행 시킴.
+- `--reload` 옵션은 개발 모드에서 사용되며, 코드 변경 시 서버를 자동으로 다시 시작
