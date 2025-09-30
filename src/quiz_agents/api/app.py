@@ -7,11 +7,12 @@ quiz_app = build_graph()
 
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to the Quiz Agents API"}
+    return {"message": "명탐정 코난 Quiz Agents API가 동작 중입니다."}
 
 @app.post("/chat")
 def chat(user_input: str, state: dict = None):
-    """Process user input and return the updated state."""
+    """퀴즈 챗봇과 상호작용하는 엔드포인트."""
+    
     if state is None:
         state = init_state()
 

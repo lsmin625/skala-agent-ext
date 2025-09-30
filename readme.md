@@ -106,3 +106,25 @@ LangGraph 그래프 워크플로우를 구성하기 위한 상태 및 노드 함
 애플리케이션의 사용자 인터페이스 구성 요소를 처리.
     - `app.py`: Gradio 기반 챗봇 UI를 정의하고 이를 상태 그래프와 통합.
     - `state.py`: UI를 위한 애플리케이션 상태를 초기화.
+
+#### 3.6. `api/` 하위 폴더
+
+    FastAPI와 Unicorn 서버를 통해 RESTful API 서버를 제공하는 모듈
+    - `app.py`: FastAPI 기반 REST API 엔드포인트 정의 및 상태 그래프와의 연동.
+
+## 실행 방법
+
+### Gradio UI 모드 또는 API 모드로 실행
+
+```bash
+python main.py ui
+python main.py api
+```
+### REST API 전용 모드로 실행
+
+```bash
+uvicorn quiz_agents.api.app:app --reload
+```
+- uvicorn은 ASGI 서버로, FastAPI 애플리케이션을 실행하는 데 사용
+- quiz_agents.api.app:app은 quiz_agents/api/app.py 파일에서 app 객체(FastAPI 인스턴스)를 가져와 실행 시킴.
+--reload 옵션은 개발 모드에서 사용되며, 코드 변경 시 서버를 자동으로 다시 시작
