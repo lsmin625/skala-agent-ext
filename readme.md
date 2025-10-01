@@ -53,6 +53,47 @@ if __name__ == "__main__":
 - `quiz_results.db`: 퀴즈 결과를 저장하는 SQLite 데이터베이스 파일.
 - `avatar_conan.png` 및 `avatar_user.png`: Gradio 챗봇 UI에서 사용되는 아바타 이미지
 
+#### 2.1 sqlite 설치
+
+- Windows
+
+    * 다운로드 페이지: https://www.sqlite.org/download.html
+    * sqlite-tools-win-x64-3500400.zip 다운로드 후 c:\sqlite 폴더에 압축 해제
+    * 환경변수 path 추가
+
+- WSL
+
+```bash
+sudo apt update
+sudo apt install sqlite3
+```
+
+#### 2.2 sqlite 테이블 조회
+
+- data 폴더로 이동
+
+```bash
+sqlite3 quiz_results.db
+```
+
+- 데이터베이스의 모든 테이블 목록을 조회
+
+```bash
+.tables
+```
+
+- 테이블 데이터 조회 (현재는 DB 명과 테이블 명이 동일)
+
+```bash
+SELECT * FROM quiz_results LIMIT 10;
+```
+
+- DB 접속 종료
+
+```bash
+.exit
+```
+
 ### 3. `quiz_agents/` 하위 폴더
 
 애플리케이션의 핵심 모듈 - 구성 정보, 모델 클래스, LangGraph 노드, 서비스 및 UI 구성에 필요한 모듈로 구분.
