@@ -5,6 +5,7 @@ def reduce_list(left: list, right: list) -> list:
     """두 리스트를 합칩니다."""
     return left + right
 
+
 # 애플리케이션 상태 모델 정의
 # 모든 필드를 선택적(total=False)으로 관리 => 상태 관리에 적합한 방식
 class AppState(TypedDict, total=False):
@@ -22,7 +23,7 @@ class AppState(TypedDict, total=False):
     applicant: Annotated[ApplicantInfo, "응시자 정보"]
     questions: Annotated[list[dict], "생성된 퀴즈 질문 목록"]
     quiz_index: Annotated[int, "현재 진행 중인 퀴즈의 인덱스"]
-    user_answers: Annotated[list[str], "사용자가 제출한 답변 목록", reduce_list]
+    user_answers: Annotated[list[str], "사용자가 제출한 답변 목록"]
     grading_prompt: Annotated[str, "채점을 위해 LLM에 전달할 프롬프트"]
     final_report: Annotated[FinalReport, "최종 채점 결과 보고서"]
 

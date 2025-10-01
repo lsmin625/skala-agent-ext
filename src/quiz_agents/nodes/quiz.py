@@ -48,9 +48,10 @@ def quiz_popper(state: AppState) -> AppState:
 
 def answer_collector(state: AppState) -> AppState:
     """답변 수집 및 다음 인덱스"""
-    quiz_index = state["quiz_index"]
-    quiz = state["questions"][quiz_index]
+    quiz_index = state.get("quiz_index", 0)
+    quiz = state.get("questions", [])[quiz_index]
     user_input = state.get("user_input", "").strip()
+    user_answers = state.get("user_answers", [])
 
     if not user_input:
         return {"chat_history": [("assistant", "답변을 입력해 주세요.")]}
@@ -63,12 +64,13 @@ def answer_collector(state: AppState) -> AppState:
         except (ValueError, IndexError):
             pass
 
-    return {"user_answers": [processed_answer], "quiz_index": quiz_index + 1}
+    user_answers.append(processed_answer)
+    return {"user_answers": user_answers, "quiz_index": quiz_index + 1}
 
 def grading_prompter(state: AppState) -> AppState:
     """채점 프롬프트 생성"""
-    questions = state["questions"]
-    user_answers = state["user_answers"]
+    questions = state.get("questions", [])
+    user_answers = state.get("user_answers", [])
 
     prompt_buff = ["지금부터 아래의 문제와 정답, 그리고 사용자의 답변을 보고 채점을 시작해주세요."]
     for i, (q, a) in enumerate(zip(questions, user_answers)):

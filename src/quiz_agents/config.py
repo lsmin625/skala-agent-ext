@@ -7,7 +7,7 @@ load_dotenv()
 
 # __file__ 이 없는 경우 (예: Jupyter) 대비 fallback
 try:
-    DEFAULT_BASE_DIR = Path(__file__).resolve().parent
+    DEFAULT_BASE_DIR = Path(__file__).resolve().parents[1]
 except NameError:
     DEFAULT_BASE_DIR = Path.cwd()
 
@@ -42,9 +42,10 @@ class Settings(BaseSettings):
     @property
     def DB_FILE(self) -> Path:
         return self.DATA_DIR / "quiz_results.db"
-
-    # class Config:
-    #     env_file = ".env"
-    #     extra = "ignore"
         
 settings = Settings()
+
+print(f"DATA_DIR: {settings.DATA_DIR}")
+print(f"QUIZ_FILE: {settings.QUIZ_FILE}")
+print(f"APPLICANT_FILE: {settings.APPLICANT_FILE}")
+print(f"DB_FILE: {settings.DB_FILE}")

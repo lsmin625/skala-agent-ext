@@ -1,3 +1,4 @@
+from zipfile import Path
 import gradio as gr
 from quiz_agents.nodes.graph import build_graph
 from quiz_agents.nodes.state import init_state
@@ -20,7 +21,9 @@ def chat_fn(user_input, state):
 
 def build_ui():
     """Gradio UI를 빌드합니다."""
-    
+    avatar_user = str(settings.DATA_DIR / "avatar_user.png")
+    avatar_conan = str(settings.DATA_DIR / "avatar_conan.png")
+    print(f"avatar_user: {avatar_user}, avatar_conan: {avatar_conan}")
     with gr.Blocks(theme=gr.themes.Soft()) as demo:
         gr.Markdown("""
         ### 🧩 멀티 에이전트 퀴즈/리포트 (LangGraph)
@@ -30,7 +33,7 @@ def build_ui():
         chatbot = gr.Chatbot(
             label="명탐정 코난 퀴즈 챗봇",
             height=400,
-            avatar_images=(str(settings.DATA_DIR/"avatar_user.png"), str(settings.DATA_DIR/"avatar_conan.png")),
+            avatar_images=(avatar_user, avatar_conan),
             type="messages",
         )
         txt = gr.Textbox(placeholder="메시지를 입력해보세요!", show_label=False)
