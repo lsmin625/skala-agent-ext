@@ -6,6 +6,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+src/**/__pycache__/
 
 # C extensions
 *.so
@@ -109,5 +110,3 @@ Thumbs.db
 .project
 .classpath
 *.swp
-
-src/**/__pycache__/
