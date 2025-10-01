@@ -5,9 +5,15 @@ from pydantic_settings import BaseSettings
 
 load_dotenv()
 
+# __file__ 이 없는 경우 (예: Jupyter) 대비 fallback
+try:
+    DEFAULT_BASE_DIR = Path(__file__).resolve().parent
+except NameError:
+    DEFAULT_BASE_DIR = Path.cwd()
+
 class Settings(BaseSettings):
     # 기본 경로
-    BASE_DIR: Path = Field(default_factory=lambda: Path(__file__).resolve().parents[1])
+    BASE_DIR: Path = Field(default_factory=lambda: DEFAULT_BASE_DIR)
 
     # 모델/동작
     OPENAI_MODEL: str = "gpt-4o"
@@ -42,7 +48,3 @@ class Settings(BaseSettings):
     #     extra = "ignore"
         
 settings = Settings()
-
-# 결과 확인
-print(f"DATA_DIR: {settings.DATA_DIR}")
-print(f"QUIZ_FILE: {settings.QUIZ_FILE}")
